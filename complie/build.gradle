@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':anotation')
+    //注册我们的注解，告诉虚拟机我们这个module里面的自定义注解处理器
+    implementation 'com.google.auto.service:auto-service:1.0-rc3'
+}
+//解决中文乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
